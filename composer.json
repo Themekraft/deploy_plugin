@@ -1,0 +1,26 @@
+{
+  "name": "themekraft/deploy_plugin",
+  "description": "Deploy the free or pro version of a plugin. This is used to deploy using CI environment.",
+  "keywords": [
+    "freemius",
+    "sdk",
+    "php",
+    "deploy free",
+    "deploy pro",
+    "deploy in CI"
+  ],
+  "homepage": "https://themekraft.com",
+  "license": "GPL-2.0+",
+  "require": {
+    "php": ">=5.2",
+    "symfony/console": "^3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Console\\": "src"
+    },
+    "classmap": [
+      "src"
+    ]
+  }
+}
