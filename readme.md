@@ -30,4 +30,7 @@ Help:
   This command line help you to download a zip file as free and/or pro generated version.
 ```
 
+```
+php console.php download freeversion.zip --plugin-id= --dev-id= --public-key='' --secret-key='' --is-premium=false
+```
 This is a project in progress. Not finished yet. 

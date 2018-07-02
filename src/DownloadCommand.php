@@ -60,16 +60,14 @@ class DownloadCommand extends SymfonyCommand {
 
 		$api = new Freemius_Api( FS__API_SCOPE, intval( $options['dev-id'] ), $options['public-key'], $options['secret-key'] );
 
-		$parameters               = array();
-		$parameters['is_premium'] = ( ! empty( $options['contributor'] ) );
-		$fileParameter            = array();
-		$fileParameter['file']    = $path;
-		$is_premium               = ( empty( $options['is-premium'] ) ) ? '' : '?is_premium=false';
-		$url                      = '/plugins/' . $options['plugin-id'] . '/updates/latest.zip' . $is_premium;
-		$download_url             = $api->GetSignedUrl( $url );
-		$path                     = realpath( $path );
-		$new_file_content         = file_get_contents( $download_url );
-		$file                     = fopen( $path, 'w+' );
+		$is_premium = '?is_premium=false';
+		if ( ! empty( $options['is-premium'] ) && strtolower( $options['is-premium'] ) == 'true' ) {
+			$is_premium = '?is_premium=true';
+		}
+		$url              = '/plugins/' . $options['plugin-id'] . '/tags/latest.zip' . $is_premium;
+		$download_url     = $api->GetSignedUrl( $url );
+		$new_file_content = file_get_contents( $download_url );
+		$file             = fopen( $path, 'w+' );
 		if ( $file !== false ) {
 			fwrite( $file, $new_file_content );
 			fclose( $file );
