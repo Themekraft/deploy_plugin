@@ -5,7 +5,7 @@ use Console\DownloadCommand;
 use Console\UploadCommand;
 use Symfony\Component\Console\Application;
 
-define( 'FS__API_SCOPE', 'plugin' );
+define( 'FS__API_SCOPE', 'developer' );
 
 $app = new Application('Freemius', '1.0.0');
 $app->add(new UploadCommand());
